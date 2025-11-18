@@ -44,7 +44,7 @@ function respostaSelecionada(opcaoSelecionada){
 }
 
 function mostraResultado(){
-    caixaPerguntas.textContent = "Se fosse possível traduzir sua forma de aprender em palavras, diríamos que...";
+    caixaPerguntas.textContent = "Após avaliar suas respostas , o seu perfil profissional é:-";
     textoResultado.textContent = historiaFinal;
     caixaAlternativas.textContent = " ";
 }
