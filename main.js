@@ -44,7 +44,7 @@ function respostaSelecionada(opcaoSelecionada){
 }
 
 function mostraResultado(){
-    caixaPerguntas.textContent = "Após avaliar suas respostas , o seu perfil profissional é:-";
+    caixaPerguntas.textContent = "Após avaliar suas respostas, o seu perfil profissional é:";
     textoResultado.textContent = historiaFinal;
     caixaAlternativas.textContent = " ";
 }
