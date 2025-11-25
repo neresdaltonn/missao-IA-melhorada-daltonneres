@@ -8,14 +8,15 @@ const caixaResultado = document.querySelector(".caixa-resultado");
 const textoResultado = document.querySelector(".texto-resultado");
 const botaoJogarNovamnete = document.querySelector(".novamente-btn");
 
+
+
 let atual = 0;
 let perguntaAtual;
-let historiaFinal = "";
+let historiaFinal = " ";
 
-botaoJogarNovamnete.addEventListener("click", jogaNovamente);
+function mostraPergunta(){
 
-function mostraPergunta() {
-    if (atual >= perguntas.length) {
+    if (atual >= perguntas.length){
         mostraResultado();
         return;
     }
@@ -26,39 +27,41 @@ function mostraPergunta() {
     mostraAlternativas();
 }
 
-function mostraAlternativas() {
-    for (const alternativa of perguntaAtual.alternativas) {
+function mostraAlternativas(){
+    for (const alternativa of perguntaAtual.alternativas){
         const botaoAlternativas = document.createElement("button");
         botaoAlternativas.textContent = alternativa.texto;
         botaoAlternativas.addEventListener("click", () => respostaSelecionada(alternativa));
         caixaAlternativas.appendChild(botaoAlternativas);
-    }
+    } 
 }
 
-function respostaSelecionada(opcaoSelecionada) {
+function respostaSelecionada(opcaoSelecionada){
     const afirmacoes = aleatorio(opcaoSelecionada.afirmacao);
     historiaFinal += afirmacoes + " ";
     atual++;
     mostraPergunta();
 }
 
-function mostraResultado() {
-caixaPerguntas.textContent = `Avaliando suas respostas, ${nome}, identificamos as características que definem o seu perfil profissional...`;
+function mostraResultado(){
+    caixaPerguntas.textContent = `Avaliando suas respostas, ${nome}, identificamos as características que definem o seu perfil profissional...`;
+    textoResultado.textContent = historiaFinal;
     caixaAlternativas.textContent = " ";
     caixaResultado.classList.add("mostrar");
+    botaoJogarNovamnete.addEventListener("click", jogaNovamente);
 }
 
-function jogaNovamente() {
+function jogaNovamente(){
     atual = 0;
-    historiaFinal = "";
+    historiaFinal = " ";
     caixaResultado.classList.remove("mostrar");
-    substituiNome()
-    mostraPergunta;();
+    substituiNome();
+    mostraPergunta();
 }
 
 function substituiNome(){
-    for (const pergunta of perguntas) {
-        pergunta.enunciado = pergunta.enunciado.replace(/você/g, nome)
+    for (const pergunta of perguntas){
+        pergunta.enunciado = pergunta.enunciado.replace(/você/g, nome);
     }
 }
 
