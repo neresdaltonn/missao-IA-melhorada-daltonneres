@@ -1,4 +1,4 @@
-import { aleatorio } from "./aleatorio.js";
+import { aleatorio, nome } from "./aleatorio.js";
 import { perguntas } from "./perguntas.js";
 
 const caixaPrincipal = document.querySelector(".caixa-principal");
@@ -12,7 +12,6 @@ let atual = 0;
 let perguntaAtual;
 let historiaFinal = "";
 
-// Adiciona o event listener ao botão de "Jogar novamente" uma única vez
 botaoJogarNovamnete.addEventListener("click", jogaNovamente);
 
 function mostraPergunta() {
@@ -44,8 +43,7 @@ function respostaSelecionada(opcaoSelecionada) {
 }
 
 function mostraResultado() {
-    caixaPerguntas.textContent = "Com base nas suas respostas, seu perfil profissional pode ser descrito como...";
-    textoResultado.textContent = historiaFinal;
+caixaPerguntas.textContent = `Avaliando suas respostas, ${nome}, identificamos as características que definem o seu perfil profissional...`;
     caixaAlternativas.textContent = " ";
     caixaResultado.classList.add("mostrar");
 }
@@ -54,7 +52,15 @@ function jogaNovamente() {
     atual = 0;
     historiaFinal = "";
     caixaResultado.classList.remove("mostrar");
-    mostraPergunta();
+    substituiNome()
+    mostraPergunta;();
 }
 
+function substituiNome(){
+    for (const pergunta of perguntas) {
+        pergunta.enunciado = pergunta.enunciado.replace(/você/g, nome)
+    }
+}
+
+substituiNome();
 mostraPergunta();
